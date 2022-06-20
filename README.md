@@ -3,4 +3,4 @@
 数据库为MySQL 8.0.26
 
 效果图如下：
-![image text](https://github.com/******/dbscan_clustering_algorithm/blob/master/data/dbscan_performance_comparison.png "DBSCAN Performance Comparison")
+![image text](https://github.com/SnakeFairy/-Node.js-/blob/main/Show%20pictures/1.png)
