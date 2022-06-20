@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>修改员工信息</title>
+    <link rel="stylesheet" type="text/css" href="/css/hr_select.css" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/app.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        body{
+            background: url("/img/2041964.jpg") no-repeat;
+            background-size: 100% 137% ;
+        }
+        .login-form{
+            margin-top: 37%;
+            margin-bottom: 40%;
+            width: 520px;
+            background: #f1f1f1;
+            height: 960px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 40px;
+            padding-right: 40px;
+            border-radius: 20px;
+            position: absolute;
+            left: 41%;
+            top: 30%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login-form h1{
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .txtb{
+            border-bottom: 2px solid #adadad;
+            position: relative;
+            margin: 10px 0;
+        }
+        .txtb1{
+            position: relative;
+            margin: 5px 0;
+        }
+
+        .txtb input{
+            font-size: 15px;
+            color: #333;
+            border: none;
+            width: 100%;
+            outline: none;
+            background: none;
+            padding: 0 5px;
+            height: 40px;
+        }
+        .txtb1 input{
+            font-size: 15px;
+            color: #333;
+            border: none;
+            width: 100%;
+            outline: none;
+            background: none;
+            padding: 0 5px;
+            height: 40px;
+        }
+
+        .txtb span::before{
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: #adadad;
+            transform: translateY(-50%);
+            z-index: -1;
+            transition: .5s;
+        }
+        .txtb1 span::before{
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: #adadad;
+            transform: translateY(-50%);
+            z-index: -1;
+            transition: .5s;
+        }
+
+        .txtb span::after{
+            content: '';
+            position: absolute;
+            left: 0%;
+            top: 100%;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(120deg, #A6DCEF, #E36387);
+            transition: .5s;
+        }
+        .txtb1 span::after{
+            content: '';
+            position: absolute;
+            left: 0%;
+            top: 100%;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(120deg, #A6DCEF, #E36387);
+            transition: .5s;
+        }
+
+        .focus + span::before{
+            top: -5px;
+        }
+
+        .focus + span::after{
+            width: 100%;
+        }
+
+        .logbtn{
+            display: block;
+            width: 100%;
+            height: 50px;
+            border: none;
+            background: linear-gradient(120deg, #88304E , #E23E57, #311D3F);
+            background-size: 200%;
+            color: #F7FBFC;
+            outline: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        .logbtn:hover{
+            background-position: right;
+        }
+
+        .bottom-text{
+            margin-top: 60px;
+            text-align: center;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body id="body" class="dark-sidebar">
+<div class="page-wrapper">
+    <div>
+        <a class="nav-link" href="/hr_select" >
+            <i class="fa fa-reply-all menu-icon"></i>
+        </a>
+    </div>
+    <div class="page-content-tab">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="card-body" >
+
+                    <div class="card">
+                        <form class="login-form" method="post" action="/hr_upd">
+                            <h1>修改员工-<%=result[0].uname%>-的信息</h1>
+                            <div class="txtb1">
+                                <input type="hidden" name="id" value="<%=result[0].id%>">
+                            </div>
+                            <div class="txtb">
+                                <input type="text" name="uname" value="<%=result[0].uname%>" placeholder="请输入员工姓名">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="性别">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="gender">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1" <%if(result[0].gender==1){%>selected<%}%>>男</option>
+                                    <option value ="0" <%if(result[0].gender==0){%>selected<%}%>>女</option>
+                                </select>
+                            </div>
+                            <div class="txtb">
+                                <input type="number" name="age" max="100" value="<%=result[0].age%>" placeholder="年龄">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="出生日期">
+                            </div>
+                            <div class="txtb">
+                                <input type="date" name="birthday" value="<%=result[0].birthday%>" placeholder="出生日期">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="婚否">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="isMarry">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1" <%if(result[0].isMarry==1){%>selected<%}%>>是</option>
+                                    <option value ="0" <%if(result[0].isMarry==0){%>selected<%}%>>否</option>
+                                </select>
+                            </div>
+                            <div class="txtb">
+                                <input type="text" name="address" value="<%=result[0].address%>" placeholder="居住地址">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="入职时间">
+                            </div>
+                            <div class="txtb">
+                                <input type="date" name="entryTime" value="<%=result[0].entryTime%>" placeholder="入职时间">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="学历">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="edu_id">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1" <%if(result[0].edu_id==1){%>selected<%}%>>初中</option>
+                                    <option value ="2" <%if(result[0].edu_id==2){%>selected<%}%>>高中</option>
+                                    <option value ="3" <%if(result[0].edu_id==3){%>selected<%}%>>本科</option>
+                                    <option value ="4" <%if(result[0].edu_id==4){%>selected<%}%>>硕士</option>
+                                    <option value ="5" <%if(result[0].edu_id==5){%>selected<%}%>>博士</option>
+                                </select>
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="在职状态">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="status">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1" <%if(result[0].status==1){%>selected<%}%>>在职</option>
+                                    <option value ="0" <%if(result[0].status==0){%>selected<%}%>>离职/未入职</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="logbtn" id="btn1">提交</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/script/jquery-3.4.1.min.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/analytics-index.init.js"></script>
+<script src="static/js/app.js"></script>
+</body>
+</html>

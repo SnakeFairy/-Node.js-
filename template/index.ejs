@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>员工页面</title>
+    <link rel="stylesheet" type="text/css" href="/css/checkpwd.css" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/app.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        body{
+            background: url("/img/2046860.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body id="body" class="dark-sidebar">
+<div class="left-sidebar">
+    <div class="sidebar-user-pro media border-end">
+        <div class="position-relative mx-auto">
+            <span class="online-icon position-absolute end-0"><i class="mdi mdi-record text-success"></i></span>
+        </div>
+        <div class="media-body ms-2 user-detail align-self-center">
+            <h5 class="font-14 m-0 fw-bold"><%=result[0].uname%></h5>
+        </div>
+    </div>
+    <div class="menu-content h-100" data-simplebar="">
+        <div class="menu-body navbar-vertical">
+            <div class="collapse navbar-collapse tab-content" id="sidebarCollapse">
+                <%if(numbers==1){%>
+                    <ul class="navbar-nav tab-pane active" role="tabpanel">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index"><i class="fa fa-person-booth menu-icon"></i><span>个人资料</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/checkpwd"><i class="fa fa-key menu-icon"></i><span>修改密码</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/paylist"><i class="fa fa-book menu-icon"></i><span>本月工资</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/loginout"><i class="fa fa-ban menu-icon"></i><span>退出登录</span></a>
+                        </li>
+                    </ul>
+                <%}else if(numbers==2){%>
+                    <ul class="navbar-nav tab-pane active" role="tabpanel">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index"><i class="fa fa-person-booth menu-icon"></i><span>个人资料</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/checkpwd"><i class="fa fa-key menu-icon"></i><span>修改密码</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/paylist"><i class="fa fa-book menu-icon"></i><span>本月工资</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hr_select"><i class="ti ti-mail menu-icon"></i><span>所有员工的基本信息</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hr_add"><i class="ti ti-planet menu-icon"></i><span>添加新员工</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/loginout"><i class="fa fa-ban menu-icon"></i><span>退出登录</span></a>
+                        </li>
+                    </ul>
+                <%}else{%>
+                <ul class="navbar-nav tab-pane active" role="tabpanel">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index"><i class="fa fa-person-booth menu-icon"></i><span>个人资料</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/checkpwd"><i class="fa fa-key menu-icon"></i><span>修改密码</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/paylist"><i class="fa fa-book menu-icon"></i><span>本月工资</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/acc_paylist"><i class="ti ti-chart-bubble menu-icon"></i><span>所有员工薪资</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/acc_payadd"><i class="ti ti-forms menu-icon"></i><span>录入本月员工薪资</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/acc_rank"><i class="ti ti-chart-donut menu-icon"></i><span>调整薪资制度</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/loginout"><i class="fa fa-ban menu-icon"></i><span>退出登录</span></a>
+                    </li>
+                </ul>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-wrapper">
+    <div class="page-content-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card-body" >
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h4 class="card-title">欢迎你：<%=result[0].uname%></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive browser_users">
+                                <table class="table table-hover mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th class="border-top-0">姓名</th>
+                                        <th class="border-top-0">性别</th>
+                                        <th class="border-top-0">年龄</th>
+                                        <th class="border-top-0">出生日期</th>
+                                        <th class="border-top-0">身份证号</th>
+                                        <th class="border-top-0">现居住地</th>
+                                        <th class="border-top-0">婚否</th>
+                                        <th class="border-top-0">学历</th>
+                                        <th class="border-top-0">入职时间</th>
+                                        <th class="border-top-0">在职状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><%=result[0].uname%></td>
+                                        <td><%if(result[0].gender==0){%>
+                                                女
+                                            <%}else{%>
+                                                男
+                                            <%}%>
+                                        </td>
+                                        <td><%=result[0].age%></td>
+                                        <td><%=result[0].birthday%></td>
+                                        <td><%=result[0].personNum%></td>
+                                        <td><%=result[0].address%></td>
+                                        <td><%if(result[0].isMarry==0){%>
+                                               未婚
+                                            <%}else{%>
+                                               已婚
+                                            <%}%>
+                                        </td>
+                                        <td><%=result[0].education%></td>
+                                        <td><%=result[0].entryTime%></td>
+                                        <td><%if(result[0].status==0){%>
+                                                离职
+                                            <%}else{%>
+                                                在职
+                                            <%}%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/analytics-index.init.js"></script>
+<script src="static/js/app.js"></script>
+</body>
+</html>

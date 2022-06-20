@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>添加新员工</title>
+    <link rel="stylesheet" type="text/css" href="/css/hr_select.css" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/app.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        body{
+            background: url("/img/2046046.jpg") no-repeat;
+            background-size: 100% 170%;
+        }
+        .login-form{
+            margin-top: 45%;
+            margin-bottom: 10%;
+            width: 520px;
+            background: #f1f1f1;
+            height: 1260px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 40px;
+            padding-right: 40px;
+            border-radius: 20px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login-form h1{
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .txtb{
+            border-bottom: 2px solid #adadad;
+            position: relative;
+            margin: 10px 0;
+        }
+        .txtb1{
+            position: relative;
+            margin: 5px 0;
+        }
+
+        .txtb input{
+            font-size: 15px;
+            color: #333;
+            border: none;
+            width: 100%;
+            outline: none;
+            background: none;
+            padding: 0 5px;
+            height: 40px;
+        }
+        .txtb1 input{
+            font-size: 15px;
+            color: #333;
+            border: none;
+            width: 100%;
+            outline: none;
+            background: none;
+            padding: 0 5px;
+            height: 40px;
+        }
+
+        .txtb span::before{
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: #adadad;
+            transform: translateY(-50%);
+            z-index: -1;
+            transition: .5s;
+        }
+        .txtb1 span::before{
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: #adadad;
+            transform: translateY(-50%);
+            z-index: -1;
+            transition: .5s;
+        }
+
+        .txtb span::after{
+            content: '';
+            position: absolute;
+            left: 0%;
+            top: 100%;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(120deg, #A6DCEF, #E36387);
+            transition: .5s;
+        }
+        .txtb1 span::after{
+            content: '';
+            position: absolute;
+            left: 0%;
+            top: 100%;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(120deg, #A6DCEF, #E36387);
+            transition: .5s;
+        }
+
+        .focus + span::before{
+            top: -5px;
+        }
+
+        .focus + span::after{
+            width: 100%;
+        }
+
+        .logbtn{
+            display: block;
+            width: 100%;
+            height: 50px;
+            border: none;
+            background: linear-gradient(120deg, #88304E , #E23E57, #311D3F);
+            background-size: 200%;
+            color: #F7FBFC;
+            outline: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        .logbtn:hover{
+            background-position: right;
+        }
+
+        .bottom-text{
+            margin-top: 60px;
+            text-align: center;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body id="body" class="dark-sidebar">
+<div class="left-sidebar">
+    <div class="sidebar-user-pro media border-end">
+        <div class="position-relative mx-auto">
+            <span class="online-icon position-absolute end-0"><i class="mdi mdi-record text-success"></i></span>
+        </div>
+        <div class="media-body ms-2 user-detail align-self-center">
+            <h5 class="font-14 m-0 fw-bold"><%=result[0].uname%></h5>
+        </div>
+    </div>
+    <div class="menu-content h-100" data-simplebar="">
+        <div class="menu-body navbar-vertical">
+            <div class="collapse navbar-collapse tab-content" id="sidebarCollapse">
+                <%if(numbers==1){%>
+                    <ul class="navbar-nav tab-pane active" role="tabpanel">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index"><i class="fa fa-person-booth menu-icon"></i><span>个人资料</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/checkpwd"><i class="fa fa-key menu-icon"></i><span>修改密码</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/paylist"><i class="fa fa-book menu-icon"></i><span>本月工资</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/loginout"><i class="fa fa-ban menu-icon"></i><span>退出登录</span></a>
+                        </li>
+                    </ul>
+                <%}else if(numbers==2){%>
+                    <ul class="navbar-nav tab-pane active" role="tabpanel">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index"><i class="fa fa-person-booth menu-icon"></i><span>个人资料</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/checkpwd"><i class="fa fa-key menu-icon"></i><span>修改密码</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/paylist"><i class="fa fa-book menu-icon"></i><span>本月工资</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hr_select"><i class="ti ti-mail menu-icon"></i><span>所有员工的基本信息</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hr_add"><i class="ti ti-planet menu-icon"></i><span>添加新员工</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/loginout"><i class="fa fa-ban menu-icon"></i><span>退出登录</span></a>
+                        </li>
+                    </ul>
+                <%}else{%>
+                    <ul class="navbar-nav tab-pane active" role="tabpanel">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index"><i class="fa fa-person-booth menu-icon"></i><span>个人资料</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/checkpwd"><i class="fa fa-key menu-icon"></i><span>修改密码</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/paylist"><i class="fa fa-book menu-icon"></i><span>本月工资</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/acc_paylist"><i class="ti ti-chart-bubble menu-icon"></i><span>所有员工薪资</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/acc_payadd"><i class="ti ti-forms menu-icon"></i><span>录入本月员工薪资</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/acc_rank"><i class="ti ti-chart-donut menu-icon"></i><span>调整薪资制度</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/loginout"><i class="fa fa-ban menu-icon"></i><span>退出登录</span></a>
+                        </li>
+                    </ul>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-wrapper">
+    <div class="page-content-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card-body" >
+                    <div class="card">
+                        <form class="login-form" method="post" action="/hr_add">
+                            <h1>添加新员工</h1>
+                            <div class="txtb">
+                                <input type="number" name="per_id" placeholder="用户ID">
+                            </div>
+                            <div class="txtb">
+                                <input type="text" name="uname" placeholder="员工姓名">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="性别">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="gender">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1">男</option>
+                                    <option value ="0">女</option>
+                                </select>
+                            </div>
+                            <div class="txtb">
+                                <input type="number" name="age" placeholder="年龄">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="出生日期">
+                            </div>
+                            <div class="txtb">
+                                <input type="date" name="birthday" placeholder="出生日期">
+                            </div>
+                            <div class="txtb">
+                                <input type="text" name="loginame" placeholder="登录账号">
+                            </div>
+                            <div class="txtb">
+                                <input type="password" name="pwd" placeholder="密码">
+                            </div>
+
+
+
+                            <div class="txtb1">
+                                <input type="text" placeholder="婚否">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="isMarry">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1">是</option>
+                                    <option value ="0">否</option>
+                                </select>
+                            </div>
+                            <div class="txtb">
+                                <input type="text" name="address" placeholder="居住地址">
+                            </div>
+                            <div class="txtb">
+                                <input type="number" name="personNum" placeholder="身份证号" maxlength="18">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="入职时间">
+                            </div>
+                            <div class="txtb">
+                                <input type="date" name="entryTime" placeholder="入职时间">
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="学历">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="edu_id">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1">初中</option>
+                                    <option value ="2">高中</option>
+                                    <option value ="3">本科</option>
+                                    <option value ="4">硕士</option>
+                                    <option value ="5">博士</option>
+                                </select>
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="在职状态">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="status">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1">在职</option>
+                                    <option value ="0">离职/未入职</option>
+                                </select>
+                            </div>
+                            <div class="txtb1">
+                                <input type="text" placeholder="岗位">
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="port_id">
+                                    <option value="" disabled>请选择</option>
+                                    <option value="1">普通员工</option>
+                                    <option value ="2">行政主管</option>
+                                    <option value ="3">财务总监</option>
+                                </select>
+                            </div>
+
+
+
+                            <button type="submit" class="logbtn" id="btn1">提交</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/script/jquery-3.4.1.min.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/analytics-index.init.js"></script>
+<script src="static/js/app.js"></script>
+</body>
+</html>
