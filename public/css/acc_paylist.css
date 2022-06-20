@@ -1,0 +1,26 @@
+body {
+    background: url(../img/2042333.jpg);
+}
+
+.divc {
+    background: rgba(250,250,250,0.8);
+}
+a{
+    color: lightskyblue;
+}
+a:hover{
+    color: #FF6600;
+}
+table {
+    border: 1px solid orange;
+}
+
+table th {
+    color: white;
+    background-color: orange;
+    border: 1px solid white;
+}
+
+table td {
+    border: 1px solid orange;
+}

@@ -1,0 +1,20 @@
+body {
+    background: url(../img/2046046.jpg) no-repeat;
+}
+
+.diva {
+    margin-top: 100px;
+}
+
+.input {
+    width: 300px;
+}
+
+h4 {
+    color: #FD7E14;
+}
+
+p {
+    color: white;
+    font-weight: 700;
+}

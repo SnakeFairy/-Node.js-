@@ -1,0 +1,28 @@
+body {
+    background: url(../img/2044419.jpg);
+    background-size: cover;
+}
+
+.divc {
+    background: rgba(250,250,250,0.8);
+}
+a{
+    color: lightskyblue;
+}
+a:hover{
+    color: #FF6600;
+}
+table {
+    border: 1px solid lightsalmon;
+}
+table td {
+    border: 1px solid lightsalmon;
+}
+.tds{
+    color: #DC3545;
+    font-weight: 700;
+}
+.tde{
+    color: gold;
+    font-weight: 700;
+}

@@ -1,0 +1,16 @@
+body{
+    background:url(../img/2027110.jpg) no-repeat;
+}
+.divc{
+    background-color: lightskyblue;
+}
+a:hover{
+    color: #FF6600;
+}
+.a{
+    color: white;
+}
+span{
+    color: gold;
+    font-weight: 700;
+}
